@@ -5,11 +5,12 @@ data = json.load(open('foodyo_output.json'))
 
 
 def traverse(data):
-    print ('--' * traverse.level + "> " + data['name'])
-    for kid in data['children']:
-        traverse.level += 1
-        traverse(kid)
-        traverse.level -= 1
+    if data["selected"]:
+        print ('--' * traverse.level + "> " + data['name'])
+        for kid in data['children']:
+            traverse.level += 1
+            traverse(kid)
+            traverse.level -= 1
 
 
 traverse.level = 1
